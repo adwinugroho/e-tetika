@@ -8,7 +8,7 @@
  - profile
 
 
-2. article
+2. blog
  - blog (crud article)
  - detail article
 
@@ -52,10 +52,10 @@
  - status -> STATUS_CHOICES a. draft b. published
  - author (string) -> foregin key oneToOne user
 
-3. event
+3. product
  - id pk auto_increment
  - title (string)
- - overview (string)
+ - description (string)
  - banner (imageField)
  - picture (imageField)
  - location (string)
@@ -63,6 +63,10 @@
  - quota (string)
  - is_refund (boolean)
  - other_artist (string)
+ - weight (string)
+ - shippingFee (string)
+ - quantity (number)
+ - type (string)
  - ticket_price (fk from cart)
  - quantity (fk from cart)
  - id_user (fk from user)
@@ -76,17 +80,6 @@
  - price
  - id_user (fk from user)
  - sub_total
-
-5. product retail
- - id pk auto_increment
- - datetime
- - quantity
- - name
- - description
- - price
- - weight
- - shippingFee
- - id_user (fk from user)
 
 ### User and Permission
 1. Superadmin
@@ -105,3 +98,12 @@
 
 4. user only
  - only can buy ticket
+ - watch event
+
+## App
+ - account
+  - Handle auth, profile, dashboard
+ - blog
+  - handle article
+ - core
+  - handle cart, order, product
