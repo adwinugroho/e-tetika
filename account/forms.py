@@ -10,7 +10,8 @@ class UserLoginForm(AuthenticationForm):
 
     username = forms.CharField(
         widget = forms.TextInput(
-            attrs = { 
+            attrs = {
+                'class': 'form-control mb-3',  
                 'placeholder': 'Enter your username here',
                 }
             ),
@@ -18,6 +19,7 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(
         widget = forms.PasswordInput(
             attrs = {
+            'class': 'form-control', 
             'placeholder': 'Enter your password here',
             }
         ),

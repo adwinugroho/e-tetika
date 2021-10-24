@@ -31,10 +31,10 @@
               </div>
               <h4>Tunggu apalagi?</h4>
               <h6 class="font-weight-light">Yuk gabung! langsung aja daftar</h6>
-              {% if request.user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             <h6 class="font-weight-medium">
                 Please, go to dashboard! <a href="{% url 'account:dashboard' %}">Click here!</a>
-              </h6>
+            </h6>
             {% else %}
               <form class="pt-3" method="post">
                 <div class="form-group">

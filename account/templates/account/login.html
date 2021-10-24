@@ -31,28 +31,21 @@
               </div>
               <h4>Selamat datang wal!</h4>
               <h6 class="font-weight-light">Senang bisa liat bubuhannya lagi!</h6>
+              {% if request.user.is_authenticated %}
+              <h6 class="font-weight-medium">
+                  Please, go to dashboard! <a href="{% url 'account:dashboard' %}">Click here!</a>
+              </h6>
+              {% else %}
               <form class="pt-3" method="post">
                 <div class="form-group">
-                  <label for="exampleInputEmail">Username</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0">
-                        <i class="ti-user text-primary"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control form-control-lg border-left-0" id="exampleInputEmail" placeholder="Username">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword">Password</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0">
-                        <i class="ti-lock text-primary"></i>
-                      </span>
-                    </div>
-                    <input type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Password">                        
-                  </div>
+                  {% if form.errors %}
+                        <p style="color: red">username or password not correct</p>
+                      {% endif %}
+                        {% csrf_token %}
+                        {% for field in form  %}
+                            {{field.label}}
+                            {{field}}
+                        {% endfor %}
                 </div>
                 <div class="my-3">
                   <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit"">LOGIN</button>
@@ -61,6 +54,7 @@
                   Ga punya akun? <a href="{% url 'account:register' %}" class="text-primary">Buat</a>
                 </div>
               </form>
+             {% endif %}
             </div>
           </div>
           <div class="col-lg-6 login-half-bg d-flex flex-row">
